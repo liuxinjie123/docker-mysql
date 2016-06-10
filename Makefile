@@ -1,2 +1,2 @@
-include ../bin/Makefile
+include ../aegis-docker/bin/Makefile
 
