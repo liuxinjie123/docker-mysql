@@ -19,13 +19,13 @@ start() {
         else
             echo "ERROR: $container_name fail to start" | color red bold;
         fi
-		docker exec -it mysql-dev /migration/docker_migrate.sh up;
+		docker exec -i mysql-dev /migration/docker_migrate.sh up;
     elif [[ $stat = "running" ]]; then
         echo "$container_name already running!!!" | color yellow bold;
     else
         echo "$container_name does not exist, begin creating..." | color yellow bold;
         devCreate;
-		docker exec -it mysql-dev /migration/docker_migrate.sh init;
+		docker exec -i mysql-dev /migration/docker_migrate.sh init;
     fi
 }
 
@@ -37,13 +37,13 @@ staging() {
         else
             echo "ERROR: $container_name fail to start" | color red bold;
         fi
-        docker exec -it mysql-dev /migration/docker_migrate.sh up;
+        docker exec -i mysql-dev /migration/docker_migrate.sh up;
     elif [[ $stat = "running" ]]; then
         echo "$container_name already running!!!" | color yellow bold;
     else
         echo "$container_name does not exist, begin creating..." | color yellow bold;
         stagingCreate;
-        docker exec -it mysql-dev /migration/docker_migrate.sh init;
+        docker exec -i mysql-dev /migration/docker_migrate.sh init;
     fi
 }
 
@@ -51,7 +51,7 @@ rebirth() {
     clean;
     image;
     devCreate;
-    docker exec -it mysql-dev /migration/docker_migrate.sh init;
+    docker exec -i mysql-dev /migration/docker_migrate.sh init;
 }
 
 eval "$@"; 

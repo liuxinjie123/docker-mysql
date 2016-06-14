@@ -1,2 +1,1 @@
-import.sql
-initdb.sql
+*.sql
