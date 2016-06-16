@@ -47,6 +47,10 @@ staging() {
     fi
 }
 
+testing() {
+	staging;
+}
+
 rebirth() {
     clean;
     image;
